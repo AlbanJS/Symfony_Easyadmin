@@ -1,0 +1,50 @@
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<html>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div style="display: inline">
+                        <img src='https://app.garicproprete.fr/img/logo.png' alt="logo garic" class="img-fluid"
+                             style="max-height: 100px; display: inline;">
+
+                        <h5 class="card-subtitle">Agents de propreté : {{ bon_materiel.agent }}</h5>
+                        <p>Date de prêt : {{ bon_materiel.datePret | date('d/m/Y') }}</p>
+                        <p>Date de retour : {{ bon_materiel.dateRetour | date('d/m/Y') }}</p>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Materiel</th>
+                            <th>Observations</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td style="width: 33%">{{ bon_materiel.materiel }}</td>
+                            <td style="width: 33%">{{ bon_materiel.observation }} </td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                                {#                                {% if file %}#}
+
+                                {#                                    {{ file | raw }}#}
+                                {#                                {% endif %}#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+</body>
+</html>

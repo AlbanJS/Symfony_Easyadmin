@@ -1,0 +1,111 @@
+<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<html>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        
+
+
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div style="display: inline">
+                        <img src='https://app.garicproprete.fr/img/logo.png' alt="logo garic" class="img-fluid"
+                             style="max-height: 100px; display: inline;">
+                        <h2 style="display: inline; text-align: center; vertical-align: center;" class="card-title">bon
+                            de travail n°{{ bon.numero }}</h2>
+                        <h5 class="card-subtitle">Agents de propreté : {{ bon.listeAgents }}</h5>
+                        <p>Date d'exécution prévue : {{ bon.dateExecutionPrevue | date('d/m/Y') }}</p>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Nom du client</th>
+                            <th>Adresse</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td style="width: 33%">{{ bon.client }}</td>
+                            <td style="width: 33%">{{ bon.client.adresse }} , {{ bon.client.codepostale }} , {{ bon.client.ville }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="row">
+                        <div class="col-12">
+                            <h6>Travail</h6>
+                            <p>{{ bon.travail }}</p>
+                        </div>
+                    </div>
+                    {% if bon.observations %}
+                        <div class="row">
+                            <div class="col-12">
+                                <h6>Observations</h6>
+                                <p>{{ bon.observations }}</p>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if bon.imageName %}
+                        <div class="row">
+                            <div class="col-12">
+                                <h6>Fichier transmis à l'agent :</h6>
+                                <p><a target="_blank" href="/uploads/files/{{ bon.imageName }}">Voir le fichier</a></p>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if bon.imageNameAgent %}
+                        <div class="row">
+                            <div class="col-12">
+                                <h6>Fichier ajouté par l'agent :</h6>
+                                <p><a target="_blank" href="/uploads/files/{{ bon.imageNameAgent }}">Voir le fichier</a></p>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <div id="actionsContainer">
+
+                                {% if not bon.tempsTravail %}
+                                    {% if bon.heureArrivee %}
+                                        <b>Heure d'arrivée : {{ bon.heureArrivee | date('H:i') }}</b>
+                                    {% endif %}
+                                    {% if bon.heureArrivee %}
+                                        <b>Heure de départ : {{ bon.heureDepart | date('H:i') }}</b>
+                                    {% endif %}
+                                {% endif %}
+{#                                <p>Durée de travail : {{ bon.heuresTravail | date('%Hh%I') }}</p>#}
+{#                                <p>Signature du client : {{ bon.nomSignature }}</p>#}
+{#                                {% if file %}#}
+
+{#                                    {{ file | raw }}#}
+{#                                {% endif %}#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
